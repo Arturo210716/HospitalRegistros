@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="WB DataDic" />
+    <meta name="description" content="BaseHospital Data Dictionary." />
+    <title>Registros Medicos Diccionario de Datos</title>
+    <style type="text/css">
+    table{
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    abbr{
+        cursor: help;
+    }
+    table, td, th{
+        border-style: solid;
+        border-width: 1px;
+    }
+    table caption{
+        font-size: 120%;
+        font-weight: bold;
+    }
+    caption{
+        color: black;
+    }
+    td, th{
+        border-color: rgb(0, 0, 0);
+    }
+    tr:hover{
+        color: #333;
+        background-color: #F2F2F2;
+    }
+    th{
+        background-color: rgb(98, 96, 213);
+    }
+    td{
+        color: rgb(106, 101, 210);
+    }
+    ul{
+        font-style: italic;
+    }
+    #title-sect{
+        color: rgb(0, 0, 0);
+        text-align: right;
+    }
+    .proj-desc{
+        text-align: right;
+    }
+    </style>
+</head>
+<body>
+<div id="title-sect">
+<h1>Registros Medicos<br> Diccionario de Datos</h1>
+<p>
+<em>2024-03-23</em>
+</p>
+<p class="proj-desc">
+<em></em>
+</p>
+</div>
+<table id='receta_medica_detalle'>
+<caption>receta_medica_detalle</caption>
+<tr><td colspan='11'></td></tr>
+<tr>
+    <th>Nombre de la columna</th>
+    <th>Tipo de dato</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Descripcion</th>
+</tr>
+<tr>
+    <td>ID</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>ID: Este es un campo de tipo entero sin signo (int unsigned) y está configurado para ser autoincremental (AUTO_INCREMENT). Actúa como la clave primaria de la tabla, lo que significa que cada fila en esta tabla tendrá un valor único en este campo.</td>
+</tr>
+<tr>
+    <td>receta_id</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>receta_id: Este campo almacena el ID de la receta médica asociada con el detalle de la receta. Es un campo de tipo entero sin signo (int unsigned). Además, hay una restricción de clave externa (FOREIGN KEY) llamada fk_receta que hace referencia al campo ID de la tabla receta_medica, asegurando que el valor almacenado en este campo exista en la tabla receta_medica.</td>
+</tr>
+<tr>
+    <td>MEDICAMENTO_ID</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>MEDICAMENTO_ID: Este campo almacena el ID del medicamento asociado con el detalle de la receta. Es un campo de tipo entero sin signo (int unsigned). También hay una restricción de clave externa (FOREIGN KEY) llamada fk_medicamento que hace referencia al campo ID de la tabla medicamentos, asegurando que el valor almacenado en este campo exista en la tabla medicamentos.</td>
+</tr>
+<tr>
+    <td>DOSIS</td>
+    <td>VARCHAR(1024)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>DOSIS: Este campo almacena la dosis del medicamento. Es de tipo varchar(1024), lo que significa que puede contener hasta 1024 caracteres de texto. dosis= *Cantidad que tomara el paciente Unidad:ml,mg,ui,mcg,u*</td>
+</tr>
+<tr>
+    <td>RECOMENDACIONES</td>
+    <td>VARCHAR(1024)</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>RECOMENDACIONES: Este campo almacena cualquier recomendación asociada con el medicamento. Es de tipo varchar(1024) y tiene un valor predeterminado de NULL, lo que significa que puede estar vacío si no se proporciona ninguna recomendación.</td>
+</tr>
+<table id='registros_medicos'>
+<caption>registros_medicos</caption>
+<tr><td colspan='11'></td></tr>
+<tr>
+    <th>Nombre de la columna</th>
+    <th>Tipo de dato</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Descripcion</th>
+</tr>
+<tr>
+    <td>ID</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>ID: Es un campo de tipo entero que actúa como la clave primaria de la tabla. Se espera que sea único para cada registro médico.</td>
+</tr>
+<tr>
+    <td>Persona_ID</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Persona_ID: Este campo almacena el ID de la persona a la que pertenece el registro médico. Es un campo de tipo entero sin signo (int unsigned). Además, hay una restricción de clave externa (FOREIGN KEY) llamada fk_registros_1 que hace referencia al campo ID de la tabla personas, asegurando que el valor almacenado en este campo exista en la tabla personas.</td>
+</tr>
+<tr>
+    <td>Personal_Medico_ID</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Personal_Medico_ID: Este campo almacena el ID del personal médico relacionado con el registro médico. Es un campo de tipo entero sin signo (int unsigned). También hay una restricción de clave externa (FOREIGN KEY) llamada fk_registros_2 que hace referencia al campo Persona_ID de la tabla personal_medico, asegurando que el valor almacenado en este campo exista en la tabla personal_medico.</td>
+</tr>
+<tr>
+    <td>Fecha_Creacion_archivo</td>
+    <td>DATE</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Fecha_Creacion_archivo: Este campo almacena la fecha en que se creó el archivo del registro médico. Es de tipo DATE y tiene un valor predeterminado (DEFAULT NULL), lo que significa que si no se proporciona un valor al insertar un nuevo registro, se utilizará NULL como valor predeterminado.</td>
+</tr>
+<tr>
+    <td>Fecha_Edicion_archivo</td>
+    <td>DATE</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Fecha_Edicion_archivo: Este campo almacena la fecha en que se editó por última vez el archivo del registro médico. Al igual que el campo anterior, es de tipo DATE y tiene un valor predeterminado de NULL.</td>
+</tr>
+</table>
+</body>
+</html>
