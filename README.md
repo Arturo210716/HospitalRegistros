@@ -168,4 +168,4 @@ abordando tanto las necesidades operativas como las estratégicas para el éxito
 
 ## 📁 Documentación completa:
 
-[Documentacion](Documentacion/PapuMedicos.pdf)
+- [Documentacion](Documentacion/PapusTeam.pdf)
