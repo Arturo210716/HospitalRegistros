@@ -1,6 +1,5 @@
 # Modulo de Registros Médicos
-
-##Integrantes: 
+## Integrantes:
 
 Arturo Aguilar Santos M-210716 
 
@@ -8,7 +7,7 @@ Justin Martin Muñoz Escorcia M-210659
 
 José Ángel Gómez Ortiz M-210562 
 
-Administración de Base de Datos 
+## Administración de Base de Datos 
 
 M.T.I. Marco Antonio Ramírez Hernández 
 
