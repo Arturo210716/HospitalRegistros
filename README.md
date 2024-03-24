@@ -14,5 +14,5 @@ M.T.I. Marco Antonio Ramírez Hernández
 Ingeniería en Desarrollo y Gestión de Software (IDGS) Enero-Abril 2024 
 
 - 📁: __Documentación__:
-  + [Documentacion del Registros Médicos](PapuMedicos.pdf)
+  + [Documentacion de Registros Médicos](Documentacion/PapuMedicos.pdf)
   + [Mockups de los modulos propuestos](mockups.pdf)
