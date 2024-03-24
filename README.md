@@ -166,6 +166,6 @@ abordando tanto las necesidades operativas como las estratégicas para el éxito
 - Modulo 3: Dashboard de Registros Médicos
 ![Modulo3Dashboard](Img/Modulo3Dashboard.png)
 
-## Documentación completa:
+## 📁 Documentación completa:
 
-![Documentacion](Documentacion/PapuMedicos.pdf)
+[Documentacion](Documentacion/PapuMedicos.pdf)
