@@ -158,9 +158,9 @@ abordando tanto las necesidades operativas como las estratégicas para el éxito
 
 ## Mockups
 - Modulo 1: Expedientes Medicos
-![Modulo1Crud](Img/LogoPapusTeam.png)
-![Modulo1Agregar](Img/LogoPapusTeam.png)
-![Modulo1Editar](Img/LogoPapusTeam.png)
+![Modulo1Crud](Img/Modulo1Editar.png)
+![Modulo1Agregar](Img/Modulo1Editar.png)
+![Modulo1Editar](Img/Modulo1Editar.png)
 - Modulo 2: Notas Medicas
 ![Modulo2Tabla](Img/Modulo2Tabla.png)
 - Modulo 3: Dashboard de Registros Médicos
