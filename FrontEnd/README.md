@@ -1,3 +1,3 @@
 # 📁 Documentación de Mockups:
 
-- [Mockups](Documentacion/MockupsRegistrosM.pdf)
+- [Mockups](../Documentacion/MockupsRegistrosM.pdf)
