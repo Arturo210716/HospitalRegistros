@@ -7,7 +7,7 @@
 # PrivilegeCare
 ## Organigrama del Equipo: 
 
- ![Organigrama](Img/Organigrama PapusTeam.png)
+ ![Organigrama](Img/OrganigramaPapusTeam.png)
  
 | Nombre y Apellido| Cargo| Departamento u Organización|
 | ------------- | ------------- | ------------- |
