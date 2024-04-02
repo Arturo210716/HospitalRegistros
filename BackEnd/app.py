@@ -14,15 +14,21 @@ collection = db['test_collection']
 @app.route('/api/items', methods=['GET'])
 def get_items():
     items = list(collection.find())
+    # Convertir ObjectId a cadenas
+    for item in items:
+        item['_id'] = str(item['_id'])
     return jsonify(items)
 
 @app.route('/api/items/<id>', methods=['GET'])
 def get_item(id):
     item = collection.find_one({'_id': ObjectId(id)})
     if item:
+        # Convertir ObjectId a cadena
+        item['_id'] = str(item['_id'])
         return jsonify(item)
     else:
         return jsonify({'error': 'Elemento no encontrado'}), 404
+
 
 @app.route('/api/items', methods=['POST'])
 def add_item():
