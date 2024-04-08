@@ -1,6 +1,6 @@
-# PapusTeam
+# PapusTics
 
-| ![PapusTeam](Img/LogoPapusTeam.png)| ![LogoHospital](Img/LogoHospital.png)|
+| ![PapusTics](Img/LogoPapusTeam.png)| ![LogoHospital](Img/LogoHospital.png)|
 | ------------- | ------------- |
 | Logo Empresa | Logo Hospital |
 
