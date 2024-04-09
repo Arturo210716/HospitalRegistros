@@ -17,4 +17,18 @@ ya sea GET, POST, PUT Y DELETE
 
 NOTA: tomar en cuenta que el servidor de MongoDB debe estar ejecutandose
 # Funcionamineto de la API con MongoDB
-!(Img/ApiPOSt.png)
+|![captura](Img/ApiPOSt.png)|
+| ------------- |
+| Metodo POST |
+
+|![captura](Img/ApiGET.png)|
+| ------------- |
+| Metodo GET |
+
+|![captura](Img/ApiPUT.png)|
+| ------------- |
+| Metodo PUT |
+
+|![captura](Img/ApiDELETE.png)|
+| ------------- |
+| Metodo DELETE |
