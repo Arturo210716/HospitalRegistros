@@ -2,12 +2,8 @@ db.createCollection("registros_medicos", {
    validator: {
       $jsonSchema: {
          bsonType: "object",
-         required: ["id", "ficha_identificacion", "fecha_nacimiento", "edad", "genero", "estado_civil", "ocupacion", "lengua_autoctona", "tipo_sangre", "alergias", "domicilio_paciente", "numero_telefonico_paciente", "numero_telefonico_familiar", "padecimiento_actual", "signos_vitales", "fecha_registro"],
+         required: ["ficha_identificacion", "fecha_nacimiento", "genero" , "tipo_sangre", "alergias", "domicilio_paciente", "padecimiento_actual", "signos_vitales", "notas_medicas", "fecha_registro"],
          properties: {
-            id: {
-               bsonType: "int",
-               description: "debe ser un número entero y es requerido"
-            },
             ficha_identificacion: {
                bsonType: "object",
                properties: {
@@ -82,23 +78,7 @@ db.createCollection("registros_medicos", {
                bsonType: "date",
                description: "Debe ser una fecha y es requerida"
             },
-            edad:{
-               bsonType: "int",
-               description: "debe ser un número entero y es requerido"
-            },
             genero:{
-               bsonType: "string",
-               description: "debe ser una cadena de texto y es requerido"
-            },
-            estado_civil:{
-               bsonType: "string",
-               description: "debe ser una cadena de texto y es requerido"
-            },
-            ocupacion:{
-               bsonType: "string",
-               description: "debe ser una cadena de texto y es requerido"
-            },
-            lengua_autoctona:{
                bsonType: "string",
                description: "debe ser una cadena de texto y es requerido"
             },
@@ -132,59 +112,23 @@ db.createCollection("registros_medicos", {
                   pais:{
                      bsonType: "string",
                      description: "debe ser una cadena de texto y es requerido"
-                  }
+                  },
+                  numero_telefonico_paciente:{
+                     bsonType: "int",
+                     description: "debe ser un número entero y es requerido"
+                  },
+                  numero_telefonico_familiar:{
+                     bsonType: "int",
+                     description: "debe ser un número entero y es requerido"
+                  },
                }
-            },
-            numero_telefonico_paciente:{
-               bsonType: "int",
-               description: "debe ser un número entero y es requerido"
-            },
-            numero_telefonico_familiar:{
-               bsonType: "int",
-               description: "debe ser un número entero y es requerido"
             },
             padecimiento_actual: {
                bsonType: "object",
                properties: {
                   interrogatorio_sistemas:{
-                     bsonType: "object",
-                     properties: {
-                        sistema_digestivo:{
-                           bsonType: "string",
-                           description: "debe ser una cadena de texto y es requerido"
-                        },
-                        sistema_nervioso:{
-                           bsonType: "string",
-                           description: "debe ser una cadena de texto y es requerido"
-                        },
-                        sistema_respiratorio:{
-                           bsonType: "string",
-                           description: "debe ser una cadena de texto y es requerido"
-                        },
-                        sistema_locomotor:{
-                           bsonType: "string",
-                           description: "debe ser una cadena de texto y es requerido"
-                        },
-                        sistema_excretor:{
-                           bsonType: "string",
-                           description: "debe ser una cadena de texto y es requerido"
-                        },
-                        sistema_circulatorio:{
-                           bsonType: "string",
-                           description: "debe ser una cadena de texto y es requerido"
-                        },
-                        sistema_endocrino:{
-                           bsonType: "string",
-                           description: "debe ser una cadena de texto y es requerido"
-                        },
-                        sistema_reproductor:{
-                           bsonType: "string",
-                           description: "debe ser una cadena de texto y es requerido"
-                        },
-                        sistema_oseo:{
-                           bsonType: "string",
-                           description: "debe ser una cadena de texto y es requerido"
-                        }
+                     bsonType: "string",
+                     description: "debe ser una cadena de texto y es requerido"
                      }
                   }
                }
@@ -196,41 +140,21 @@ db.createCollection("registros_medicos", {
                      bsonType: "decimal",
                      description: "debe ser un decimal(5,2) y es requerido"
                   },
-                  unidad_estatura: {
-                     bsonType: "string",
-                     description: "debe ser una cadena de texto y es requerido"
-                  },
                   peso: {
                      bsonType: "decimal",
                      description: "debe ser un decimal(5,2) y es requerido"
-                  },
-                  unidad_peso: {
-                     bsonType: "string",
-                     description: "debe ser una cadena de texto y es requerido"
                   },
                   temperatura_corporal: {
                      bsonType: "decimal",
                      description: "debe ser un decimal(5,2) y es requerido"
                   },
-                  unidad_temperatura: {
-                     bsonType: "string",
-                     description: "debe ser una cadena de texto y es requerido"
-                  },
                   presion_sistolica: {
                      bsonType: "decimal",
                      description: "debe ser un decimal(5,2) y es requerido"
                   },
-                  unidad_medida_ps: {
-                     bsonType: "string",
-                     description: "debe ser una cadena de texto y es requerido"
-                  },
                   presion_diastolica: {
                      bsonType: "decimal",
                      description: "debe ser un decimal(5,2) y es requerido"
-                  },
-                  unidad_medida_pd: {
-                     bsonType: "string",
-                     description: "debe ser una cadena de texto y es requerido"
                   },
                   oxigenacion: {
                      bsonType: "decimal",
@@ -240,26 +164,21 @@ db.createCollection("registros_medicos", {
                      bsonType: "decimal",
                      description: "debe ser un decimal(5,2) y es requerido"
                   },
-                  unidad_medida_fc: {
-                     bsonType: "string",
-                     description: "debe ser una cadena de texto y es requerido"
-                  },
                   frecuencia_respiratoria: {
                      bsonType: "decimal",
                      description: "debe ser un decimal(5,2) y es requerido"
-                  },
-                  unidad_medida_fr: {
-                     bsonType: "string",
-                     description: "debe ser una cadena de texto y es requerido"
                   },
                   fecha_registro: {
                      bsonType: "date",
                      description: "Debe ser una fecha y es requerido"
                   }
                }
+            },
+            notas_medicas:{
+               bsonType: "string",
+               description: "debe ser una cadena de texto y es requerido"
             }
          }
       }
    }
-})
-
+)
