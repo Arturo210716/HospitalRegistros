@@ -1,3 +1,4 @@
+// la carpeta services junto con el archivo apiService se localizaran el la rura de FrontHospital/services/apiService.js
 import axios from "axios";
 
 const API_URL = "http://localhost:5000/api/items"; // Asegúrate de usar la URL correcta de tu API
