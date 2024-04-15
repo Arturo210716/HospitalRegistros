@@ -439,6 +439,13 @@
                     value="Previous"
                     >Previous</a
                   > -->
+                  <!-- cambio del boton para envio de los datos -->
+                  <a
+                        @click="enviarDatos"
+                        class="btn btn-primary submit action-button float-center mt-3"
+                        type="submit"
+                        >Enviar</a
+                      >
                     </fieldset>
                   </div>
                 </b-form>
