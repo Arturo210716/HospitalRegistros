@@ -27,26 +27,22 @@
               <table class="table table-striped table-bordered">
                 <thead>
                   <tr>
-                    <th v-for="data in columns" :key="data">
+                    <th v-for="data in columns" :key="data.field">
                       {{ data.label }}
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="item in filteredRows" :key="item.id">
-                    <td>{{ item.id }}</td>
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.edad }}</td>
-                    <td>{{ item.nota }}</td>
+                  <tr v-for="item in filteredRows" :key="item._id">
+                    <td>{{ item._id }}</td>
+                    <td>
+                      {{ item.nombre }} {{ item.primer_apellido }}
+                      {{ item.segundo_apellido }}
+                    </td>
+                    <td>{{ calcularEdad(item.dob) }}</td>
+                    <td>{{ item.notasM }}</td>
                   </tr>
                 </tbody>
-                <!--                 <tfoot>
-                  <tr>
-                    <th v-for="data in columns" :key="data">
-                      {{ data.label }}
-                    </th>
-                  </tr>
-                </tfoot> -->
               </table>
             </div>
           </template>
@@ -57,72 +53,63 @@
 </template>
 
 <script>
-import { xray } from "../../config/pluginInit";
 import iqCard from "../../components/xray/cards/iq-card";
+import apiService from "@/services/apiService";
+
 export default {
   name: "UiDataTable",
   components: { iqCard },
-  mounted() {
-    xray.index();
-  },
   data() {
     return {
       columns: [
-        { label: "Id", field: "id", headerClass: "text-left" },
-        { label: "Nombre completo", field: "name", headerClass: "text-left" },
+        { label: "Id", field: "_id", headerClass: "text-left" },
+        { label: "Nombre completo", field: "nombre", headerClass: "text-left" },
         { label: "Edad", field: "edad", headerClass: "text-left" },
-        { label: "Nota", field: "nota", headerClass: "text-left" },
+        { label: "Nota", field: "notasM", headerClass: "text-left" },
       ],
-      rows: [
-        {
-          id: 1,
-          name: "Tiger Nixon",
-          edad: "36",
-          nota: "Necesita paracetamol cada 8 horas",
-        },
-        {
-          id: 2,
-          name: "Garrett Winters",
-          edad: "24",
-          nota: "Necesita paracetamol cada 8 horas",
-        },
-        {
-          id: 3,
-          name: "Ashton Cox",
-          edad: "9",
-          nota: "Necesita paracetamol cada 8 horas",
-        },
-        {
-          id: 4,
-          name: "Cedric Kelly",
-          edad: "37",
-          nota: "Necesita paracetamol cada 8 horas",
-        },
-        {
-          id: 5,
-          name: "Airi Satou",
-          edad: "80",
-          nota: "Necesita paracetamol cada 8 horas",
-        },
-      ],
+      registros: [],
       searchTerm: "",
     };
+  },
+  mounted() {
+    this.obtenerRegistros();
+  },
+  methods: {
+    async obtenerRegistros() {
+      try {
+        const response = await apiService.getItems();
+        this.registros = response.data;
+      } catch (error) {
+        console.error("Error al obtener los registros:", error);
+      }
+    },
+    search() {
+      // Aquí puedes implementar la lógica para filtrar los registros
+    },
+    calcularEdad(fechaNacimiento) {
+      // Aquí puedes implementar la lógica para calcular la edad a partir de la fecha de nacimiento
+      // Por ejemplo:
+      const today = new Date();
+      const birthDate = new Date(fechaNacimiento);
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const month = today.getMonth() - birthDate.getMonth();
+      if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+      return age;
+    },
   },
   computed: {
     filteredRows() {
       const regex = new RegExp(this.searchTerm.trim(), "i");
-      return this.rows.filter(
+      return this.registros.filter(
         (item) =>
-          regex.test(item.id) ||
-          regex.test(item.name) ||
-          regex.test(item.edad) ||
-          regex.test(item.nota)
+          regex.test(item._id) ||
+          regex.test(item.nombre) ||
+          regex.test(item.primer_apellido) ||
+          regex.test(item.segundo_apellido) ||
+          regex.test(item.notasM)
       );
-    },
-  },
-  methods: {
-    search() {
-      // Puedes añadir aquí lógica adicional si lo necesitas
     },
   },
 };

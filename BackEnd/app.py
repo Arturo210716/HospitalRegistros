@@ -1,8 +1,10 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS  # Importa la extensión Flask-CORS
 from pymongo import MongoClient
 from bson import ObjectId
 
 app = Flask(__name__)
+CORS(app)  # Habilita CORS para toda la aplicación
 
 # Configuración de la conexión a MongoDB
 client = MongoClient('mongodb://localhost:27017/')
@@ -14,15 +16,21 @@ collection = db['test_collection']
 @app.route('/api/items', methods=['GET'])
 def get_items():
     items = list(collection.find())
+    # Convertir ObjectId a cadenas
+    for item in items:
+        item['_id'] = str(item['_id'])
     return jsonify(items)
 
 @app.route('/api/items/<id>', methods=['GET'])
 def get_item(id):
     item = collection.find_one({'_id': ObjectId(id)})
     if item:
+        # Convertir ObjectId a cadena
+        item['_id'] = str(item['_id'])
         return jsonify(item)
     else:
         return jsonify({'error': 'Elemento no encontrado'}), 404
+
 
 @app.route('/api/items', methods=['POST'])
 def add_item():

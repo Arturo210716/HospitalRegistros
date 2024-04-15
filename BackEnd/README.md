@@ -16,3 +16,19 @@ se utilizara la ruta dada por el servidor + /api/items y el metodo que se desea 
 ya sea GET, POST, PUT Y DELETE
 
 NOTA: tomar en cuenta que el servidor de MongoDB debe estar ejecutandose
+# Funcionamineto de la API con MongoDB
+|![captura](Img/ApiPOSt.png)|
+| ------------- |
+| Metodo POST |
+
+|![captura](Img/ApiGET.png)|
+| ------------- |
+| Metodo GET |
+
+|![captura](Img/ApiPUT.png)|
+| ------------- |
+| Metodo PUT |
+
+|![captura](Img/ApiDELETE.png)|
+| ------------- |
+| Metodo DELETE |
