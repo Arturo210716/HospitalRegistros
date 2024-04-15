@@ -515,5 +515,13 @@ export default {
       }
     },
   },
+  async created() {
+    try {
+      const response = await apiService.enviarDatos();
+      this.items = response.data;
+    } catch (error) {
+      console.error("Error al obtener los elementos:", error);
+    }
+  },
 };
 </script>
