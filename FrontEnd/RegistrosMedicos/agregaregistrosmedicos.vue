@@ -458,6 +458,7 @@
   </div>
 </template>
 <script>
+import apiService from "@/services/apiService";
 import iqCard from "../../components/xray/cards/iq-card";
 export default {
   name: "VerticalWizard",
