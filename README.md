@@ -11,9 +11,9 @@
  
 | Nombre y Apellido| Cargo| Departamento u Organización|
 | ------------- | ------------- | ------------- |
-| Arturo Aguilar Santos | Desarrollador FrontEnd / Documentador | PapusTeam |
-| Jose Angel Gomez Ortiz | Desarrollador Backend / Documentador | PapusTeam |
-| Justin Martin Muñoz Escorcia | Líder / DB Manager / Documentador | PapusTeam |
+| Arturo Aguilar Santos | Desarrollador FrontEnd / Documentador | PapusTics |
+| Jose Angel Gomez Ortiz | Desarrollador Backend / Documentador | PapusTics |
+| Justin Martin Muñoz Escorcia | Líder / DB Manager / Documentador | PapusTics |
 
 ## Objetivo General
 
