@@ -4,10 +4,11 @@
       <b-col lg="6">
         <iq-card>
           <template v-slot:headerTitle>
-            <h4>Consultas en la semana</h4>
+            <h4>Titulo de cortecia</h4>
           </template>
           <template v-slot:body>
-            <v-chart class="chart" :option="LineChartOption" />
+            <!-- <EChart theme="light" chartType="area" /> -->
+            <v-chart class="chart" :option="DoughnutChartOption" />
           </template>
         </iq-card>
       </b-col>
@@ -53,6 +54,9 @@ import iqCard from "../../components/xray/cards/iq-card";
 import { xray } from "../../config/pluginInit";
 import apiService from "@/services/apiService";
 import { onMounted } from "vue";
+import axios from "axios"; // Importamos axios para hacer llamadas a la API
+
+
 // Echart
 import { use } from "echarts/core";
 import { CanvasRenderer } from "echarts/renderers";
@@ -80,26 +84,65 @@ export default {
       TooltipComponent,
       LegendComponent,
     ]);
-
-    const LineChartOption = ref({
-      xAxis: {
-        type: "category",
-        boundaryGap: false,
-        data: ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes"],
+// ---------grafica de titulo profesional
+const DoughnutChartOption = ref({
+      tooltip: {
+        trigger: "item",
       },
-      yAxis: {
-        type: "value",
+      legend: {
+        top: "5%",
+        left: "center",
       },
       series: [
         {
-          data: [150, 230, 224, 218, 300],
-          type: "line",
-          itemStyle: {
-            color: "rgba(8, 155, 171, 1)",
+          name: "Access From",
+          type: "pie",
+          radius: ["40%", "70%"],
+          avoidLabelOverlap: false,
+          label: {
+            show: false,
+            position: "center",
           },
+          emphasis: {
+            label: {
+              show: true,
+              fontSize: 40,
+              fontWeight: "bold",
+            },
+          },
+          labelLine: {
+            show: false,
+          },
+          data: [],
         },
       ],
     });
+
+    onMounted(async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/personas"); // Realizamos la llamada a la API del servidor backend
+        const personas = response.data;
+
+        // Contamos la cantidad de cada título de cortesía
+        const conteoTitulos = personas.reduce((acc, persona) => {
+  const titulo = persona.Titulo || "C."; // Si el título está vacío o no existe, usamos "C."
+  acc[titulo] = (acc[titulo] || 0) + 1;
+  return acc;
+}, {});
+
+        // Construimos los datos para la serie del gráfico de dona
+        const dataDoughnutChart = Object.entries(conteoTitulos).map(([titulo, cantidad]) => ({
+  value: cantidad,
+  name: titulo === null ? "C." : titulo,
+}));
+
+        // Actualizamos los datos de la serie del gráfico de dona
+        DoughnutChartOption.value.series[0].data = dataDoughnutChart;
+      } catch (error) {
+        console.error("Error al obtener los datos:", error);
+      }
+    });
+//----------------------------------------------------------------------------------------
     const AreaChartOption = ref({
       color: ["#80FFA5", "#00DDFF", "#37A2FF", "#FF0087", "#FFBF00"],
 
@@ -126,6 +169,8 @@ export default {
         },
       ],
     });
+// --------------------------------------------------------------------------------------------------
+// grafica de tipo de sangre ------------------------------------------------------------------------
     const PieChartOption = ref({
       tooltip: {
         trigger: "item",
@@ -176,6 +221,7 @@ export default {
         console.error("Error al obtener los datos:", error);
       }
     });
+// ---------------------------------------------------------------------------------------------------
     /*grafica de edades------------------------------------------------------------------------------ */
     const BarChart = ref({
       xAxis: {
@@ -251,9 +297,9 @@ export default {
         return -1; // Edad no válida
       }
     };
-    // ---------------------------------------------------
+    // -----------------------------------------------------------------------------
     return {
-      LineChartOption,
+      DoughnutChartOption,
       PieChartOption,
       AreaChartOption,
       BarChart,
