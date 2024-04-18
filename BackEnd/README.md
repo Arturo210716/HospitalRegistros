@@ -3,6 +3,9 @@ para esta api se realizan las funciones de un CRUD (solo pruebas no funcina con 
 utiliza esta URL: mongodb://localhost:27017/  para la conexion a MongoDB
 e insertara los datos en una coeleccion llamada "test_collection"
 
+descarga de dependencias:
+pip install Flask Flask-CORS pymongo
+
 # Configuración de la conexión a MongoDB
 client = MongoClient('mongodb://localhost:27017/')
 db = client['test_database']
@@ -32,3 +35,7 @@ NOTA: tomar en cuenta que el servidor de MongoDB debe estar ejecutandose
 |![captura](Img/ApiDELETE.png)|
 | ------------- |
 | Metodo DELETE |
+
+# API SQL
+ servidor SQL: npm install express mysql 
+ correr: node server.js
