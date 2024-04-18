@@ -15,7 +15,7 @@
       <b-col lg="6">
         <iq-card>
           <template v-slot:headerTitle>
-            <h4>Personas registradas</h4>
+            <h4>Personas/personal nacidos (1970-2024)</h4>
           </template>
           <template v-slot:body>
             <!-- <EChart theme="light" chartType="area" /> -->
@@ -56,7 +56,6 @@ import apiService from "@/services/apiService";
 import { onMounted } from "vue";
 import axios from "axios"; // Importamos axios para hacer llamadas a la API
 
-
 // Echart
 import { use } from "echarts/core";
 import { CanvasRenderer } from "echarts/renderers";
@@ -84,8 +83,8 @@ export default {
       TooltipComponent,
       LegendComponent,
     ]);
-// ---------grafica de titulo profesional
-const DoughnutChartOption = ref({
+    // ---------grafica de titulo profesional
+    const DoughnutChartOption = ref({
       tooltip: {
         trigger: "item",
       },
@@ -125,16 +124,18 @@ const DoughnutChartOption = ref({
 
         // Contamos la cantidad de cada título de cortesía
         const conteoTitulos = personas.reduce((acc, persona) => {
-  const titulo = persona.Titulo || "C."; // Si el título está vacío o no existe, usamos "C."
-  acc[titulo] = (acc[titulo] || 0) + 1;
-  return acc;
-}, {});
+          const titulo = persona.Titulo || "C."; // Si el título está vacío o no existe, usamos "C."
+          acc[titulo] = (acc[titulo] || 0) + 1;
+          return acc;
+        }, {});
 
         // Construimos los datos para la serie del gráfico de dona
-        const dataDoughnutChart = Object.entries(conteoTitulos).map(([titulo, cantidad]) => ({
-  value: cantidad,
-  name: titulo === null ? "C." : titulo,
-}));
+        const dataDoughnutChart = Object.entries(conteoTitulos).map(
+          ([titulo, cantidad]) => ({
+            value: cantidad,
+            name: titulo === null ? "C." : titulo,
+          })
+        );
 
         // Actualizamos los datos de la serie del gráfico de dona
         DoughnutChartOption.value.series[0].data = dataDoughnutChart;
@@ -142,35 +143,70 @@ const DoughnutChartOption = ref({
         console.error("Error al obtener los datos:", error);
       }
     });
-//----------------------------------------------------------------------------------------
-    const AreaChartOption = ref({
-      color: ["#80FFA5", "#00DDFF", "#37A2FF", "#FF0087", "#FFBF00"],
+    //----------------------------------------------------------------------------------------
+// -------------grafica de personas registradas---------------------------------------------
+const AreaChartOption = ref({
+  color: ["#80FFA5", "#00DDFF", "#37A2FF", "#FF0087", "#FFBF00"],
 
-      xAxis: [
-        {
-          type: "category",
-          boundaryGap: false,
-          data: ["Adultos", "Infantes", "De la tercera edad"],
-        },
-      ],
-      yAxis: [
-        {
-          type: "value",
-        },
-      ],
-      series: [
-        {
-          data: [300, 200, 800],
-          type: "line",
-          areaStyle: {},
-          itemStyle: {
-            color: "rgba(8, 155, 171, 1)",
-          },
-        },
-      ],
+  xAxis: [
+    {
+      type: "category",
+      boundaryGap: false,
+      data: ["1970", "1980", "1990", "2000", "2010", "2020", "2024"], // Años de nacimiento
+    },
+  ],
+  yAxis: [
+    {
+      type: "value",
+    },
+  ],
+  series: [
+    {
+      data: [], // Se llenará con la suma de personas nacidas en cada año
+      type: "line",
+      areaStyle: {},
+      itemStyle: {
+        color: "rgba(8, 155, 171, 1)",
+      },
+    },
+  ],
+});
+
+onMounted(async () => {
+  try {
+    const response = await axios.get("http://localhost:3000/personas");
+    const personas = response.data;
+
+    // Inicializar contadores para cada año de nacimiento
+    const sumaPorAño = {
+      "1970": 0,
+      "1980": 0,
+      "1990": 0,
+      "2000": 0,
+      "2010": 0,
+      "2020": 0,
+      "2024": 0,
+    };
+
+    personas.forEach((persona) => {
+      // Obtener el año de nacimiento
+      const añoNacimiento = new Date(persona.Fecha_Nacimiento).getFullYear().toString();
+
+      // Incrementar el contador del año correspondiente
+      if (sumaPorAño[añoNacimiento] !== undefined) {
+        sumaPorAño[añoNacimiento]++;
+      }
     });
-// --------------------------------------------------------------------------------------------------
-// grafica de tipo de sangre ------------------------------------------------------------------------
+
+    // Actualizar los datos del gráfico con las sumas por año de nacimiento
+    AreaChartOption.value.series[0].data = Object.values(sumaPorAño);
+  } catch (error) {
+    console.error("Error al obtener los datos:", error);
+  }
+});
+    
+    // --------------------------------------------------------------------------------------------------
+    // grafica de tipo de sangre ------------------------------------------------------------------------
     const PieChartOption = ref({
       tooltip: {
         trigger: "item",
@@ -221,7 +257,7 @@ const DoughnutChartOption = ref({
         console.error("Error al obtener los datos:", error);
       }
     });
-// ---------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------------
     /*grafica de edades------------------------------------------------------------------------------ */
     const BarChart = ref({
       xAxis: {
