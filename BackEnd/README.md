@@ -38,4 +38,5 @@ NOTA: tomar en cuenta que el servidor de MongoDB debe estar ejecutandose
 
 # API SQL
  servidor SQL: npm install express mysql 
+ Instalar dependencia necesaria (cors): npm install cors 
  correr: node server.js
