@@ -5,7 +5,7 @@
 | ------------- | ------------- |
 | Proyecto | Sitio web Hospital | 
 | Fecha de preparación | Marzo 2024 | 
-| Profesor | M.T.I. Marco Antonio Ramírez Hernández - M.A.I.E Héctor Valderrábano González -  MTRO. Ricardo Luna Santos -  MTRA. Norma García Saldivar | 
+| Profesores | M.T.I. Marco Antonio Ramírez Hernández - M.A.I.E Héctor Valderrábano González - MTRO. Ricardo Luna Santos - MTRA. Norma García Saldivar | 
 
 # PapusTics
 
