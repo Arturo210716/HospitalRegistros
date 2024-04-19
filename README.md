@@ -1,3 +1,36 @@
+# Proyecto Integrador
+
+## Información del proyecto: 
+| Empresa / Organización| MOA |
+| ------------- | ------------- |
+| Proyecto | Sitio web Hospital | 
+| Fecha de preparación | Marzo 2024 | 
+| Profesor | M.T.I. Marco Antonio Ramírez Hernández | 
+
+| Empresa / Organización| MOA |
+| ------------- | ------------- 
+| Proyecto | Sitio web Hospital | 
+| Fecha de preparación | Marzo 2024 | 
+| Profesor | M.A.I.E Héctor Valderrábano González | 
+
+| Empresa / Organización| MOA |
+| ------------- | ------------- 
+| Proyecto | Sitio web Hospital | 
+| Fecha de preparación | Marzo 2024 | 
+| Profesor | MTRO. Ricardo Luna Santos | 
+
+| Empresa / Organización| MOA |
+| ------------- | ------------- 
+| Proyecto | Sitio web Hospital | 
+| Fecha de preparación | Marzo 2024 | 
+| Profesor | MTRO. Ricardo Luna Santos | 
+
+| Empresa / Organización| MOA |
+| ------------- | ------------- 
+| Proyecto | Sitio web Hospital | 
+| Fecha de preparación | Marzo 2024 | 
+| Profesor | MTRA. Norma García Saldivar | 
+
 # PapusTics
 
 | ![PapusTics](Img/LogoPapusTics.png)| ![LogoHospital](Img/LogoHospital.png)|
