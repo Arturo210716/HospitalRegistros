@@ -23,12 +23,6 @@
 | ------------- | ------------- 
 | Proyecto | Sitio web Hospital | 
 | Fecha de preparación | Marzo 2024 | 
-| Profesor | MTRO. Ricardo Luna Santos | 
-
-| Empresa / Organización| MOA |
-| ------------- | ------------- 
-| Proyecto | Sitio web Hospital | 
-| Fecha de preparación | Marzo 2024 | 
 | Profesor | MTRA. Norma García Saldivar | 
 
 # PapusTics
